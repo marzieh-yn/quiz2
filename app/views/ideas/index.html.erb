@@ -1,0 +1,27 @@
+<div class='row'>
+  <div class='col-2'>
+    <% if @tag.present? %>
+      <h6>
+        Showing ideas tagged by:
+        <span class="badge badge-pill badge-primary">
+          <%= @tag.name %>
+        </span>
+      </h6>
+    <% end %>
+  </div>
+
+  <div class='col-10'>
+    <div class='list-group'>
+      <% @ideas.each do |idea| %>
+        <%= link_to idea do %>
+          <li class='list-group-item'>
+            <p><span class='badge badge-light'></span> <%= idea.title %></p>
+                        <p><span class='badge badge-light'></span> <%= idea.description %></p>
+
+            <small>Last Updated: <%= time_ago_in_words idea.updated_at %></small>
+          </li>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,35 @@
+<div class='shadow-sm p-3 mb-5 bg-white rounded overflow-wrap'>
+  <div class='clearfix'>
+    <h1 class='float-left'>
+     
+      <%= @idea.title %>
+    </h1>
+  
+    
+  </div>
+  <div class='clearfix'>
+  <h3 class='shadow-none  rounded'><%= @idea.description %></h3>
+    </div>
+  <small class='text-muted'>
+    written by <a hrefem><%= @idea.user.full_name %></em>
+  <small>
+  <hr/>
+  
+  <div>
+    <%# link_to() just creates a anchor tag with the appropriate href. The 3rd argument is a optional options hash which can have a :method key; If a :method key is provided Rails will set a data-method attribute to the a tag and adds some additional javascript to the page which makes the anchor tag use the specified http method instead of the default GET. (Basically Rails Magic) 
+    <%# https://api.rubyonrails.org/classes/ActionView/Helpers/UrlHelper.html#method-i-link_to %>
+    <%# passing a value (number/string) to a helper method like `idea_path` will return a path with the value appended to the path. Helper paths automatically grab and use the id if it's given a instance %>
+    <%= link_to(
+      "Delete",
+      idea_path(@idea),
+      method: :delete,
+      class: 'btn btn-danger',
+      data: { confirm: 'are you sure?' },
+      )
+    %>
+    <%= link_to "Edit", edit_idea_path(@idea), class: 'btn btn-info'%>
+  </div>
+</div> 
+
+
+ 
