@@ -1,0 +1,22 @@
+<%# mb-5 is bootstrap for setting the margin bottom to size 5 https://getbootstrap.com/docs/4.4/utilities/spacing/ %>
+<nav class='navbar navbar-light bg-light mb-5'>
+  <ul>
+    <span class='navbar-brand mb-0 h1'>
+    
+      <%= link_to 'View ideas', ideas_path, class: 'nav-item' %>
+      |
+      <%= link_to 'Add idea', new_idea_path, class: 'nav-item' %>
+    </span>
+  </ul>
+  <div>
+    <% if user_signed_in? %>
+      <span class='text-muted mr-3'>Hello, <%= current_user.full_name %></span>
+            <%= link_to "Log Out", logout_path, method: :destroy, class: 'btn btn-danger' %>
+
+             <% else %>
+      <%= link_to "Log In", new_session_path, class: 'btn btn-success' %>
+      <%= link_to "sign up", signup_path, class: 'btn btn-success' %>
+
+    <% end %>
+  </div>
+</nav>
